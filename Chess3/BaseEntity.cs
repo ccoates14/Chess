@@ -11,14 +11,18 @@ namespace Chess3
         public int XPos { get; set; }
         public int YPos { get; set; }
         public readonly char color;
-        private readonly string name;
+        protected readonly string name;
+        protected readonly bool directionDown;
+        protected readonly Board board;
 
-        public BaseEntity(int xPos, int yPos, char color, string name)
+        public BaseEntity(int xPos, int yPos, char color, string name, bool directionDown, Board board)
         {
             this.XPos = xPos;
             this.YPos = yPos;
             this.color = color;
             this.name = name;
+            this.directionDown = directionDown;
+            this.board = board;
         }
 
 
@@ -34,6 +38,8 @@ namespace Chess3
             }
         }
 
+        public abstract bool isLegalMove(int x, int y);
 
+        public abstract bool executeMove(int x, int y);
     }
 }

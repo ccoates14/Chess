@@ -14,10 +14,10 @@ namespace Chess3
         {
             const bool topPlayer = true;
             gameOver = false;
-            player1 = new Player(topPlayer);
-            player2 = new Player(!topPlayer);
             board = new Board();
-
+            player1 = new Player(topPlayer, board);
+            player2 = new Player(!topPlayer, board);
+          
             run();
         }
 

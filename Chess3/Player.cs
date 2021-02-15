@@ -6,24 +6,41 @@ namespace Chess3
 {
     class Player
     {
-        bool topPlayer;
+        private bool topPlayer;
+        private Board board;
 
-        public Player(bool topPlayer)
+        public Player(bool topPlayer, Board board)
         {
             this.topPlayer = topPlayer;
+            this.board = board;
         }
 
         public bool move(Tuple<int, int, int, int> positions)
         {
-            //get unit for start pos
+            BaseEntity e = board.getUnitAtPos(positions.Item1, positions.Item2);
+            bool executedMove = false;
 
-            //if unit is not null
-            //if unit is owned by player
-            //if unit.isLegal move
-            //then make the move
-            //else reject
+            if (e != null)
+            {
+                if (ownesUnit(e))
+                {
+                    executedMove = e.executeMove(positions.Item3, positions.Item4);
+                }
+            }
+ 
+            return executedMove;
+        }
 
-            //else reject
+        public bool ownesUnit(BaseEntity e)
+        {
+            if (topPlayer && e.color == BaseEntity.COLOR_FOR_TOP_PLAYER)
+            {
+                return true;
+            }
+            else if (!topPlayer && e.color == BaseEntity.COLOR_FOR_BOTTOM_PLAYER)
+            {
+                return true;
+            }
 
             return false;
         }
