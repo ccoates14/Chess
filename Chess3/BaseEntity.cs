@@ -38,8 +38,29 @@ namespace Chess3
             }
         }
 
-        public abstract bool isLegalMove(int x, int y);
+        public bool isLegalMove(int x, int y)
+        {
+            if (x != XPos && y != YPos)
+            {
+                if (Board.positionWithinBoard(x, y))
+                {
+                    BaseEntity e = this.board.getUnitAtPos(x, y);
 
-        public abstract bool executeMove(int x, int y);
+                    if (e == null || e.color != this.color) return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool executeMove(int x, int y)
+        {
+            if (isLegalMove(x, y))
+            {
+                return this.board.movePiece(XPos, YPos, x, y);
+            }
+
+            return false;
+        }
     }
 }
