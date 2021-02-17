@@ -8,9 +8,10 @@ namespace Chess3
         public Rook(int xPos, int yPos, char color, string name, bool directionDown, Board board) : base(xPos, yPos, color, name, directionDown, board) { }
 
 
-        public new bool isLegalMove(int x, int y)
+        public override bool isLegalMove(int x, int y)
         {
-            bool legal = base.isLegalMove(x, y);
+            bool ignorePositionEntity = false;
+            bool legal = base.isLegalMoveHelper(x, y, ignorePositionEntity);
 
             if (legal)
             {

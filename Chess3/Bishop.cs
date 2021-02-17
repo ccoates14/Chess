@@ -10,13 +10,14 @@ namespace Chess3
 
         }
 
-        public new bool isLegalMove(int x, int y)
+        public override bool isLegalMove(int x, int y)
         {
             int distanceMovedX = Math.Abs(x - this.XPos);
             int distanceMovedY = Math.Abs(y - this.YPos);
             bool legal = false;
+            bool ignorePositionEntity = false;
 
-            if (base.isLegalMove(x, y) && distanceMovedX == distanceMovedY) // if the moveto pos is within the board and we are moving diagonal 
+            if (base.isLegalMoveHelper(x, y, ignorePositionEntity) && distanceMovedX == distanceMovedY) // if the moveto pos is within the board and we are moving diagonal 
             {
     
                 int xIncrementer = 1;

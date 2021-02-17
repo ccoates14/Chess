@@ -38,7 +38,7 @@ namespace Chess3
             }
         }
 
-        public virtual bool isLegalMove(int x, int y)
+        protected virtual bool isLegalMoveHelper(int x, int y, bool ignorePositionEntity)
         {
             if (x != XPos || y != YPos)
             {
@@ -46,12 +46,14 @@ namespace Chess3
                 {
                     BaseEntity e = this.board.getUnitAtPos(x, y);
 
-                    if (e == null || e.color != this.color) return true;
+                    if (!ignorePositionEntity && (e == null || e.color != this.color)) return true;
                 }
             }
 
             return false;
         }
+
+        public abstract bool isLegalMove(int x, int y);
 
         public virtual bool executeMove(int x, int y)
         {
