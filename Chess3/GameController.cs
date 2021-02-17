@@ -74,7 +74,7 @@ namespace Chess3
 
                 return new Tuple<int, int, int, int>(Int32.Parse(x1), Int32.Parse(y1), Int32.Parse(x2), Int32.Parse(y2));
             }
-            catch (Exception e)
+            catch 
             {
                 Console.WriteLine("Invalid ars!");
                 return null;

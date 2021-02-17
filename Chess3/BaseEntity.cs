@@ -26,7 +26,7 @@ namespace Chess3
         }
 
 
-        public void printSelf()
+        public virtual void printSelf()
         {
             if (color == COLOR_FOR_TOP_PLAYER)
             {
@@ -38,9 +38,9 @@ namespace Chess3
             }
         }
 
-        public bool isLegalMove(int x, int y)
+        public virtual bool isLegalMove(int x, int y)
         {
-            if (x != XPos && y != YPos)
+            if (x != XPos || y != YPos)
             {
                 if (Board.positionWithinBoard(x, y))
                 {
@@ -53,7 +53,7 @@ namespace Chess3
             return false;
         }
 
-        public bool executeMove(int x, int y)
+        public virtual bool executeMove(int x, int y)
         {
             if (isLegalMove(x, y))
             {
