@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 
 namespace Chess3
 {
@@ -8,7 +10,23 @@ namespace Chess3
 
         public override bool isLegalMove(int x, int y)
         {
-            throw new System.NotImplementedException();
+            bool ignoreEndPos = true;
+            bool legal = base.isLegalMoveHelper(x, y, ignoreEndPos);
+
+            //to check if it is adjacent the x should be at most 1 away and the y should be at most one away
+            if (legal)
+            {
+                legal = Math.Abs(x - XPos) <= 1 || Math.Abs(y - YPos) <= 1;
+
+                //check that if unit at move to pos then it should be of other team
+                if (legal)
+                {
+                    legal = board.getUnitAtPos(x, y) == null || board.getUnitAtPos(x, y).color == this.color;
+                }
+            }
+
+            return legal;
         }
+
     }
 }
