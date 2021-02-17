@@ -12,7 +12,7 @@ namespace Chess3
 
         }
 
-        public new bool isLegalMove(int x, int y)
+        public override bool isLegalMove(int x, int y)
         {
             bool ignoreEndPos = true;
             bool legal = base.isLegalMoveHelper(x, y, ignoreEndPos);
