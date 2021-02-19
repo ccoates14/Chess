@@ -5,7 +5,8 @@ namespace Chess3
 {
     class Rook : BaseEntity
     {
-        public Rook(int xPos, int yPos, char color, string name, bool directionDown, Board board) : base(xPos, yPos, color, name, directionDown, board) { }
+        public static readonly string NAME = "R";
+        public Rook(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board) { }
 
 
         public override bool isLegalMove(int x, int y)

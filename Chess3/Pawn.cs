@@ -6,8 +6,9 @@ namespace Chess3
     class Pawn : BaseEntity
     {
         private bool madeFirstMove = false;
+        public static readonly string NAME = "P";
 
-        public Pawn(int xPos, int yPos, char color, string name, bool directionDown, Board board) : base(xPos, yPos, color, name, directionDown, board)
+        public Pawn(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board)
         {
 
         }

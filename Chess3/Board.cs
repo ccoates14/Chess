@@ -136,7 +136,7 @@ namespace Chess3
 
             for (int i = 0; i < WIDTH; i++)
             {
-                grid[yPos, i] = new Pawn(yPos, i, color, "P", topBoard, this);
+                grid[yPos, i] = new Pawn(yPos, i, color, topBoard, this);
             }
         }
 

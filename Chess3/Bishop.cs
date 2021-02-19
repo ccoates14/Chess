@@ -5,7 +5,8 @@ namespace Chess3
 {
     class Bishop : BaseEntity
     {
-        public Bishop(int xPos, int yPos, char color, string name, bool directionDown, Board board) : base(xPos, yPos, color, name, directionDown, board)
+        public static readonly string NAME = "B"; 
+        public Bishop(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board)
         {
 
         }

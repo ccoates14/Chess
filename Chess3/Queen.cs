@@ -1,15 +1,21 @@
-﻿using System;
-
+﻿
 
 namespace Chess3
 {
     class Queen : BaseEntity
     {
-        public Queen(int xPos, int yPos, char color, string name, bool directionDown, Board board) : base(xPos, yPos, color, name, directionDown, board) { }
+        public static readonly string NAME = "Q";
+
+        public Queen(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board) { }
 
         public override bool isLegalMove(int x, int y)
         {
-            throw new NotImplementedException();
+            //the movement is of a queen is basically the momevement of the rook and bishop combined
+            var bishop = new Bishop(XPos, YPos, color, directionDown, board);
+            var rook = new Rook(XPos, YPos, color, directionDown, board);
+
+            //if it is legal for either rook or bishop it should be fine
+            return bishop.isLegalMove(x, y) || rook.isLegalMove(x, y);
         }
     }
 }
