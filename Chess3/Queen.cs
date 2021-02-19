@@ -6,7 +6,7 @@ namespace Chess3
     {
         public static readonly string NAME = "Q";
 
-        public Queen(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board) { }
+        public Queen(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board, NAME) { }
 
         public override bool isLegalMove(int x, int y)
         {

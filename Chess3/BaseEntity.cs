@@ -15,13 +15,14 @@ namespace Chess3
         protected readonly bool directionDown;
         protected readonly Board board;
 
-        public BaseEntity(int xPos, int yPos, char color, bool directionDown, Board board)
+        public BaseEntity(int xPos, int yPos, char color, bool directionDown, Board board, string name)
         {
             this.XPos = xPos;
             this.YPos = yPos;
             this.color = color;
             this.directionDown = directionDown;
             this.board = board;
+            this.name = name;
         }
 
 

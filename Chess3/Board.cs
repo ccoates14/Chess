@@ -152,20 +152,20 @@ namespace Chess3
             }
 
             //ROOKS
-            grid[yPos, 0] = new Rook(0, yPos, color, "R", topBoard, this);
-            grid[yPos, WIDTH - 1] = new Rook(WIDTH - 1, yPos, color, "R", topBoard, this);
+            grid[yPos, 0] = new Rook(0, yPos, color, topBoard, this);
+            grid[yPos, WIDTH - 1] = new Rook(WIDTH - 1, yPos, color, topBoard, this);
 
             //KNIGHTS
-            grid[yPos, 1] = new Knight(1, yPos, color, "N", topBoard, this);
-            grid[yPos, WIDTH - 2] = new Knight(WIDTH - 2, yPos, color, "N", topBoard, this);
+            grid[yPos, 1] = new Knight(1, yPos, color, topBoard, this);
+            grid[yPos, WIDTH - 2] = new Knight(WIDTH - 2, yPos, color, topBoard, this);
 
             //BISHOPS
-            grid[yPos, 2] = new Bishop(2, yPos, color, "B", topBoard, this);
-            grid[yPos, WIDTH - 3] = new Bishop(WIDTH - 3, yPos, color, "B", topBoard, this);
+            grid[yPos, 2] = new Bishop(2, yPos, color, topBoard, this);
+            grid[yPos, WIDTH - 3] = new Bishop(WIDTH - 3, yPos, color, topBoard, this);
 
             //KING AND QUEEN
-            grid[yPos, 3] = new King(3, yPos, color, "K", topBoard, this);
-            grid[yPos, 4] = new Queen(4, yPos, color, "Q", topBoard, this);
+            grid[yPos, 3] = new King(3, yPos, color, topBoard, this);
+            grid[yPos, 4] = new Queen(4, yPos, color, topBoard, this);
         }
     }
 }

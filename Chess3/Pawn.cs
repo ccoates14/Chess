@@ -8,7 +8,7 @@ namespace Chess3
         private bool madeFirstMove = false;
         public static readonly string NAME = "P";
 
-        public Pawn(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board)
+        public Pawn(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board, NAME)
         {
 
         }

@@ -6,7 +6,7 @@ namespace Chess3
     {
         static void Main(string[] args)
         {
-           // new GameController().start();
+            new GameController().start();
         }
     }
 }

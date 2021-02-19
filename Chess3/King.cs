@@ -7,7 +7,7 @@ namespace Chess3
     class King : BaseEntity
     {
         public static readonly string NAME = "K";
-        public King(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board) { }
+        public King(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board, NAME) { }
 
         public override bool isLegalMove(int x, int y)
         {
