@@ -15,8 +15,8 @@ namespace Chess3
             const bool topPlayer = true;
             gameOver = false;
             board = new Board();
-            player1 = new Player(topPlayer, board);
-            player2 = new Player(!topPlayer, board);
+            player1 = new Player(!topPlayer, board);
+            player2 = new Player(topPlayer, board);
           
             run();
         }
@@ -25,6 +25,7 @@ namespace Chess3
         private void run()
         {
             Player currentPlayer = player1;
+            
             Console.WriteLine("Enter moves by entering 0 - 7 for x index and 0 - 7 for y index seperated by a space, with position from to position seperated by a -");
             Console.WriteLine("For example, 0 1 - 0 2, would move white pawn from position 0 1 to position 0 2");
 
@@ -33,13 +34,19 @@ namespace Chess3
             while (!gameOver)
             {
 
-                Console.Write("Enter move: ");
-                Tuple<int, int, int, int> userMove = sanitizePlayerInput(Console.ReadLine());
-
+                Console.Write(currentPlayer.getColor() + " turn enter move: ");
+                Tuple<int, int, int, int> userMove = translatePlayerMove(sanitizePlayerInput(Console.ReadLine()));
+                Console.WriteLine(userMove);
                 if (userMove != null)
                 {
 
-                    currentPlayer.move(userMove);
+                    while (!currentPlayer.move(userMove))
+                    {
+                        Console.WriteLine("Bad Move!");
+                        Console.Write(currentPlayer.getColor() + " turn enter move: ");
+                        userMove = translatePlayerMove(sanitizePlayerInput(Console.ReadLine()));
+                        
+                    }
 
                     board.printSelf();
 
@@ -82,6 +89,21 @@ namespace Chess3
 
 
 
+        }
+
+        //to the eye of the player the 0,0 pos starts at the lower left hand of the board, but to the computer it starts at the upper left hand
+        private Tuple<int, int, int, int> translatePlayerMove(Tuple<int, int, int, int> move)
+        {
+            //the X should not change
+            int fromX = move.Item1;
+
+            //the Y should be pushed up by the height of the board - 1
+            int fromY = (Board.HEIGHT - 1) - move.Item2;
+
+            int toX = move.Item3;
+            int toY = (Board.HEIGHT - 1) - move.Item4;
+
+            return new Tuple<int, int, int, int>(fromX, fromY, toX, toY);
         }
     }
 }

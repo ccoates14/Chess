@@ -26,6 +26,14 @@ namespace Chess3
                 {
                     executedMove = e.executeMove(positions.Item3, positions.Item4);
                 }
+                else
+                {
+                    Console.WriteLine("Player does not own unit selected!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("E was null!");
             }
  
             return executedMove;
@@ -43,6 +51,13 @@ namespace Chess3
             }
 
             return false;
+        }
+
+        public char getColor()
+        {
+            if (topPlayer) return BaseEntity.COLOR_FOR_TOP_PLAYER;
+
+            return BaseEntity.COLOR_FOR_BOTTOM_PLAYER;
         }
 
 

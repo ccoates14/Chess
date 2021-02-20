@@ -17,11 +17,13 @@ namespace Chess3
         {
             bool ignoreEndPos = true;
             bool legal = base.isLegalMoveHelper(x, y, ignoreEndPos);
-
+            var c = "";
             if (legal)
             {
+                
                 if (x != XPos)
                 {
+                    
                     legal = false;
                 }
 
@@ -50,6 +52,8 @@ namespace Chess3
                 }
 
             }
+
+            Console.WriteLine("pawn legal " + legal);
 
             return legal;
         }

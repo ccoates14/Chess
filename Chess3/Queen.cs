@@ -1,5 +1,5 @@
 ﻿
-
+using System;
 namespace Chess3
 {
     class Queen : BaseEntity
@@ -13,9 +13,10 @@ namespace Chess3
             //the movement is of a queen is basically the momevement of the rook and bishop combined
             var bishop = new Bishop(XPos, YPos, color, directionDown, board);
             var rook = new Rook(XPos, YPos, color, directionDown, board);
-
+            var legal = bishop.isLegalMove(x, y) || rook.isLegalMove(x, y);
+            Console.WriteLine("queen legal " + legal);
             //if it is legal for either rook or bishop it should be fine
-            return bishop.isLegalMove(x, y) || rook.isLegalMove(x, y);
+            return legal;
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Chess3
                     
                 
             }
-
+            Console.WriteLine("Bishop legal: " + legal);
             return legal;
         }
     }

@@ -25,7 +25,7 @@ namespace Chess3
                     legal = board.getUnitAtPos(x, y) == null || board.getUnitAtPos(x, y).color == this.color;
                 }
             }
-
+            Console.WriteLine("king legal " + legal);
             return legal;
         }
 

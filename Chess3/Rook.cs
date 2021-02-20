@@ -65,7 +65,7 @@ namespace Chess3
 
 
             }
-
+            Console.WriteLine("rook legal " + legal);
             return legal;
         }
     }
