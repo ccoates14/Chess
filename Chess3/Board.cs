@@ -43,19 +43,29 @@ namespace Chess3
 
         public void printSelf()
         {
-            for (int i = 0; i < HEIGHT; i++)
+            Console.WriteLine();
+            for (int i = 0; i < HEIGHT; i++)//y
             {
-                for (int j = 0; j < WIDTH; j++)
+                Console.Write(i + " ");
+                for (int j = 0; j < WIDTH; j++)//x
                 {
                     Console.Write("|");
 
                     if (grid[i, j] != null) grid[i, j].printSelf();
                     else Console.Write("  ");
 
-
                 }
+               
                 Console.WriteLine("|");
             }
+
+            Console.Write("   ");
+            for (int j = 0; j < WIDTH; j++)
+            {
+                Console.Write(j + "  ");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public BaseEntity getUnitAtPos(int x, int y)
@@ -65,7 +75,11 @@ namespace Chess3
                 return null;
             }
 
-            return grid[y, x];
+            var unit = grid[y, x];
+
+            if (unit != null && (unit.XPos != x || unit.YPos != y)) throw new Exception("Unit pos did not match requested get pos!");
+
+            return unit;
         }
 
         public BaseEntity removeEntityAtPos(int x, int y)
@@ -136,7 +150,7 @@ namespace Chess3
 
             for (int i = 0; i < WIDTH; i++)
             {
-                grid[yPos, i] = new Pawn(yPos, i, color, topBoard, this);
+                grid[yPos, i] = new Pawn(i, yPos, color, topBoard, this);
             }
         }
 

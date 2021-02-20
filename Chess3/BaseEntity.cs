@@ -45,9 +45,19 @@ namespace Chess3
                 if (Board.positionWithinBoard(x, y))
                 {
                     BaseEntity e = this.board.getUnitAtPos(x, y);
-
-                    if (!ignorePositionEntity && (e == null || e.color != this.color)) return true;
+        
+                    if (!ignorePositionEntity) {
+                        if (e == null || e.color != this.color) {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                    
                 }
+               
             }
 
             return false;

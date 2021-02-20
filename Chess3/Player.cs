@@ -18,6 +18,9 @@ namespace Chess3
         public bool move(Tuple<int, int, int, int> positions)
         {
             BaseEntity e = board.getUnitAtPos(positions.Item1, positions.Item2);
+
+            if (e.XPos != positions.Item1 || e.YPos != positions.Item2) throw new Exception("User from pos does not match entity pos! " + positions.ToString() + " " + e.XPos + " " + e.YPos);
+
             bool executedMove = false;
 
             if (e != null)

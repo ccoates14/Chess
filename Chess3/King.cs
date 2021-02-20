@@ -9,7 +9,7 @@ namespace Chess3
         public static readonly string NAME = "K";
         public King(int xPos, int yPos, char color, bool directionDown, Board board) : base(xPos, yPos, color, directionDown, board, NAME) { }
 
-        public override bool isLegalMove(int x, int y)
+        public override bool isLegalMove(int x, int y) //i still need to program to make sure that the player doesn't put the king in check
         {
             bool ignoreEndPos = true;
             bool legal = base.isLegalMoveHelper(x, y, ignoreEndPos);
@@ -27,6 +27,11 @@ namespace Chess3
             }
             Console.WriteLine("king legal " + legal);
             return legal;
+        }
+
+        public bool isInCheckMate()
+        {
+            throw new NotImplementedException();
         }
 
     }
