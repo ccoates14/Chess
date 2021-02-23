@@ -46,9 +46,11 @@ namespace Chess3
                     }
                     else
                     {
-                        Tuple<int, int, int, int> userMove = translatePlayerMove(sanitizePlayerInput(input));
+                        Tuple<int, int, int, int> userMove = sanitizePlayerInput(input);
+                        if (userMove != null) userMove = translatePlayerMove(userMove);
+                        var containsUnit = board.getUnitAtPos(userMove.Item1, userMove.Item2) != null; //lets check if the player is trying to grab an empty pos
 
-                        if (userMove == null || !currentPlayer.move(userMove))
+                        if (!containsUnit || userMove == null || !currentPlayer.move(userMove))
                         {
                             Console.WriteLine("Bad Move!");
                         }

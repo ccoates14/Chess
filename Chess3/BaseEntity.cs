@@ -28,14 +28,23 @@ namespace Chess3
 
         public virtual void printSelf()
         {
+            Console.Write(getPrintableName());
+        }
+
+        public string getPrintableName()
+        {
+            var n = "";
+
             if (color == COLOR_FOR_TOP_PLAYER)
             {
-                Console.Write(name + "B");
+                n = name + "B";
             }
             else
             {
-                Console.Write(name + "W");
+                n = name + "W";
             }
+
+            return n;
         }
 
         protected virtual bool isLegalMoveHelper(int x, int y, bool ignorePositionEntity)

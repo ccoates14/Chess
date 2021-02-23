@@ -34,16 +34,17 @@ namespace Chess3
                     xIncrementer = -1;
                 }
 
-                int currentXPos = XPos;
-                int currentYPos = YPos;
+                int currentXPos = XPos + 1;
+                int currentYPos = YPos + 1;
                 legal = true;
 
-                for (int i = 0; i < distanceMovedX - 1 && legal; i++)
+                for (int i = 1; i < distanceMovedX - 1 && legal; i++)
                 {
                     //if we ecounter an obstacle as we move
                     if (board.getUnitAtPos(currentXPos, currentYPos) != null)
                     {
                         legal = false;
+                        Console.WriteLine("thinks it hit a unit in route " + board.getUnitAtPos(currentXPos, currentYPos).getPrintableName());
                     }
                     else
                     {
