@@ -31,6 +31,11 @@ namespace Chess3
 
         public bool isInCheckMate()
         {
+            //first check if there is a move the king can make that would put it out of check, 
+            //else see if there is a move of one of our units that can remove the king out of check from the other unit that is putting the king into check
+            //if we have exhausted all options we are in check mate
+
+
             throw new NotImplementedException();
         }
         

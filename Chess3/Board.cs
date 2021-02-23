@@ -7,10 +7,10 @@ namespace Chess3
     {
         public static readonly int WIDTH = 8;
         public static readonly int HEIGHT = 8;
-
+        public King blackKing { get; protected set; }
+        public King whiteKing { get; protected set; }
 
         private BaseEntity[,] grid;
-
 
         public Board()
         {
@@ -34,7 +34,6 @@ namespace Chess3
             //init pawn row bottom
             initPawns(false);
         }
-
 
         public bool isGameOver()
         {
@@ -125,6 +124,7 @@ namespace Chess3
                 {
                     setPos(x1, y1, e);
                     moved = true;
+
                 }
    
             }
@@ -179,6 +179,16 @@ namespace Chess3
 
             //KING AND QUEEN
             grid[yPos, 4] = new King(4, yPos, color, topBoard, this);
+
+            if (color == BaseEntity.COLOR_FOR_TOP_PLAYER)
+            {
+                blackKing = (King) grid[yPos, 4];
+            }
+            else
+            {
+                whiteKing = (King) grid[yPos, 4];
+            }
+
             grid[yPos, 3] = new Queen(3, yPos, color, topBoard, this);
         }
     }

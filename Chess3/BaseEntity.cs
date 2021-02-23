@@ -33,7 +33,7 @@ namespace Chess3
 
         public string getPrintableName()
         {
-            var n = "";
+            string n ;
 
             if (color == COLOR_FOR_TOP_PLAYER)
             {
@@ -76,14 +76,47 @@ namespace Chess3
 
         public virtual bool executeMove(int x, int y)
         {
+           // King k = board.whiteKing;
+            bool moved = false;
+
+          /*  if (color != k.color)
+            {
+                k = board.blackKing;
+            }
+          */
             if (isLegalMove(x, y))
             {
-                return this.board.movePiece(XPos, YPos, x, y);
+              //  int currentX = XPos;
+                //int currentY = YPos;
+
+               // BaseEntity targetUnit = board.getUnitAtPos(x, y);
+
+                moved = board.movePiece(XPos, YPos, x, y);
+
+                /*if (moved && k.isInCheck()) //if we moved but this put us into check
+                {
+                    //move the piece we might have kill back to where it belongs
+                    board.setPos(x, y, targetUnit);
+
+                    if (targetUnit != null)
+                    {
+                        targetUnit.XPos = x;
+                        targetUnit.YPos = y;
+                    }
+
+                    board.setPos(currentX, currentY, this); //move our entity back to its original pos
+                    XPos = x;
+                    YPos = y;
+                }*/
             }
 
-            return false;
+            return moved;
         }
 
+        public static int getDistanceBetweenTwoPoints(int n, int n1)
+        {
+            return Math.Abs(n - n1);
+        }
 
     }
 }

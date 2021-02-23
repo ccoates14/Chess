@@ -19,8 +19,8 @@ namespace Chess3
                 //a rook can move in a cross pattern to the outer edges of the board
 
                 //we already know the new pos is within the board and there either is no other units there or it contains an enemy unit
-                int distanceToNewX = Math.Abs(x - XPos);
-                int distanceToNewY = Math.Abs(y - YPos);
+                int distanceToNewX = getDistanceBetweenTwoPoints(x, XPos);
+                int distanceToNewY = getDistanceBetweenTwoPoints(y, YPos);
                 int distance;
 
                 //it will either move along the x axis or the y axis
@@ -65,7 +65,7 @@ namespace Chess3
 
 
             }
-            Console.WriteLine("rook legal " + legal);
+     
             return legal;
         }
     }
