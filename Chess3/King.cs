@@ -33,6 +33,10 @@ namespace Chess3
         {
             throw new NotImplementedException();
         }
-
+        
+        public bool isInCheck()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

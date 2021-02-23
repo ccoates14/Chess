@@ -28,40 +28,53 @@ namespace Chess3
             
             Console.WriteLine("Enter moves by entering 0 - 7 for x index and 0 - 7 for y index seperated by a space, with position from to position seperated by a -");
             Console.WriteLine("For example, 0 1 - 0 2, would move white pawn from position 0 1 to position 0 2");
-
+            Console.WriteLine("Enter d , at any time to draw board");
             board.printSelf();
 
             while (!gameOver)
             {
+                var gotUserMove = false;
 
-                Console.Write(currentPlayer.getColor() + " turn enter move: ");
-                Tuple<int, int, int, int> userMove = translatePlayerMove(sanitizePlayerInput(Console.ReadLine()));
-                Console.WriteLine(userMove);
-                if (userMove != null)
+                while (!gotUserMove)
                 {
+                    Console.Write(currentPlayer.getColor() + " turn enter move: ");
+                    var input = Console.ReadLine();
 
-                    while (!currentPlayer.move(userMove))
+                    if (input.Equals("d"))
                     {
-                        Console.WriteLine("Bad Move!");
-                        Console.Write(currentPlayer.getColor() + " turn enter move: ");
-                        userMove = translatePlayerMove(sanitizePlayerInput(Console.ReadLine()));
-                        
-                    }
-
-                    board.printSelf();
-
-                    if (currentPlayer == player1)
-                    {
-                        currentPlayer = player2;
+                        board.printSelf();
                     }
                     else
                     {
-                        currentPlayer = player1;
+                        Tuple<int, int, int, int> userMove = translatePlayerMove(sanitizePlayerInput(input));
+
+                        if (userMove == null || !currentPlayer.move(userMove))
+                        {
+                            Console.WriteLine("Bad Move!");
+                        }
+                        else
+                        {
+                            board.printSelf();
+
+                            if (currentPlayer == player1)
+                            {
+                                currentPlayer = player2;
+                            }
+                            else
+                            {
+                                currentPlayer = player1;
+                            }
+
+                            gameOver = board.isGameOver();
+                            gotUserMove = true;
+                        }
+
+
                     }
 
-                    gameOver = board.isGameOver();
+                 
                 }
-
+             
             }
 
 

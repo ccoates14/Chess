@@ -46,7 +46,7 @@ namespace Chess3
             Console.WriteLine();
             for (int i = 0; i < HEIGHT; i++)//y
             {
-                Console.Write(i + " ");
+                Console.Write((HEIGHT - (i + 1)) + " ");
                 for (int j = 0; j < WIDTH; j++)//x
                 {
                     Console.Write("|");
@@ -178,8 +178,8 @@ namespace Chess3
             grid[yPos, WIDTH - 3] = new Bishop(WIDTH - 3, yPos, color, topBoard, this);
 
             //KING AND QUEEN
-            grid[yPos, 3] = new King(3, yPos, color, topBoard, this);
-            grid[yPos, 4] = new Queen(4, yPos, color, topBoard, this);
+            grid[yPos, 4] = new King(4, yPos, color, topBoard, this);
+            grid[yPos, 3] = new Queen(3, yPos, color, topBoard, this);
         }
     }
 }

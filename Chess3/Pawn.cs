@@ -17,7 +17,7 @@ namespace Chess3
         {
             bool ignoreEndPos = true;
             bool legal = base.isLegalMoveHelper(x, y, ignoreEndPos);
-            Console.WriteLine("l1: " + legal);
+       
             if (legal)
             {
               
@@ -25,7 +25,7 @@ namespace Chess3
                 {
                     legal = false;
                 }
-                Console.WriteLine("l2: " + legal + " x: " + XPos + " "  +x);
+          
                 if (legal)
                 {
                     int distanceMoveY = Math.Abs(y - YPos);
@@ -37,16 +37,14 @@ namespace Chess3
                        
                         if (legal)
                         {
-                            Console.WriteLine("l3: " + legal);
+                        
                             int incrementer = 1;
 
                             if (color == COLOR_FOR_BOTTOM_PLAYER) incrementer = -1;
 
                             if (board.getUnitAtPos(XPos, YPos + incrementer) != null || board.getUnitAtPos(XPos, YPos + incrementer) != null)
                             {
-                                Console.WriteLine(board.getUnitAtPos(XPos, YPos + 1));
-                                Console.WriteLine(board.getUnitAtPos(XPos, YPos + 2));
-                                Console.WriteLine("l4: " + legal);
+          
                                 legal = false;
                             }
                         }
@@ -55,7 +53,7 @@ namespace Chess3
                     {
                     
                         legal = distanceMoveY == 1 && board.getUnitAtPos(XPos, YPos + 1) == null;
-                        Console.WriteLine("l.5: " + legal);
+                      
                     }
 
                   
@@ -63,7 +61,6 @@ namespace Chess3
 
             }
 
-            Console.WriteLine("pawn legal " + legal);
 
             return legal;
         }
