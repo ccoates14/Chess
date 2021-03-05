@@ -124,7 +124,7 @@ namespace Chess3
                 {
                     setPos(x1, y1, e);
                     moved = true;
-
+                    Console.WriteLine("asdasd");
                 }
    
             }

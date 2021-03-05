@@ -54,13 +54,15 @@ namespace Chess3
 
                 for (int i = 0; i < distance - 1 && legal; i++) //we don't bother looking at the last pos because it was already checked
                 {
+                    currentX += iteratorX;
+                    currentY += iteratorY;
+
                     if (board.getUnitAtPos(currentX, currentY) != null)
                     {
+                        Console.WriteLine(123);
                         legal = false;
                     }
 
-                    currentX += iteratorX;
-                    currentY += iteratorY;
                 }
 
 

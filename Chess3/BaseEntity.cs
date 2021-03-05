@@ -79,35 +79,10 @@ namespace Chess3
            // King k = board.whiteKing;
             bool moved = false;
 
-          /*  if (color != k.color)
-            {
-                k = board.blackKing;
-            }
-          */
             if (isLegalMove(x, y))
             {
-              //  int currentX = XPos;
-                //int currentY = YPos;
-
-               // BaseEntity targetUnit = board.getUnitAtPos(x, y);
-
                 moved = board.movePiece(XPos, YPos, x, y);
 
-                /*if (moved && k.isInCheck()) //if we moved but this put us into check
-                {
-                    //move the piece we might have kill back to where it belongs
-                    board.setPos(x, y, targetUnit);
-
-                    if (targetUnit != null)
-                    {
-                        targetUnit.XPos = x;
-                        targetUnit.YPos = y;
-                    }
-
-                    board.setPos(currentX, currentY, this); //move our entity back to its original pos
-                    XPos = x;
-                    YPos = y;
-                }*/
             }
 
             return moved;

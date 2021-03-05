@@ -44,7 +44,6 @@ namespace Chess3
                     if (board.getUnitAtPos(currentXPos, currentYPos) != null)
                     {
                         legal = false;
-                        Console.WriteLine("thinks it hit a unit in route " + board.getUnitAtPos(currentXPos, currentYPos).getPrintableName());
                     }
                     else
                     {
@@ -55,7 +54,7 @@ namespace Chess3
                     
                 
             }
-            Console.WriteLine("Bishop legal: " + legal);
+
             return legal;
         }
     }

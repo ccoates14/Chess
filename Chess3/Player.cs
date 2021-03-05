@@ -8,11 +8,13 @@ namespace Chess3
     {
         private bool topPlayer;
         private Board board;
+        private King k;
 
-        public Player(bool topPlayer, Board board)
+        public Player(bool topPlayer, Board board, King k)
         {
             this.topPlayer = topPlayer;
             this.board = board;
+            this.k = k;
         }
 
         public bool move(Tuple<int, int, int, int> positions)
@@ -27,7 +29,25 @@ namespace Chess3
             {
                 if (ownesUnit(e))
                 {
+                    //get unit at new pos
+                    var u = board.getUnitAtPos(positions.Item3, positions.Item4);
+
                     executedMove = e.executeMove(positions.Item3, positions.Item4);
+
+                    //if player is now in check
+                    if (executedMove && k.isInCheck())
+                    {
+                        //put moved unit back to original pos
+                        board.setPos(positions.Item1, positions.Item2, e);
+
+                        //put unit at new pos back into new pos
+                        board.setPos(positions.Item3, positions.Item4, u);
+
+                        executedMove = false;
+
+                        Console.WriteLine("Invalid move , puts king in check");
+                    }
+
                 }
                 else
                 {
@@ -42,13 +62,18 @@ namespace Chess3
             return executedMove;
         }
 
+        public bool inCheck()
+        {
+            return k.isInCheck();
+        }
+
         public bool ownesUnit(BaseEntity e)
         {
             if (topPlayer && e.color == BaseEntity.COLOR_FOR_TOP_PLAYER)
             {
                 return true;
             }
-            else if (!topPlayer && e.color == BaseEntity.COLOR_FOR_BOTTOM_PLAYER)
+            if (!topPlayer && e.color == BaseEntity.COLOR_FOR_BOTTOM_PLAYER)
             {
                 return true;
             }
@@ -62,6 +87,8 @@ namespace Chess3
 
             return BaseEntity.COLOR_FOR_BOTTOM_PLAYER;
         }
+
+
 
 
     }

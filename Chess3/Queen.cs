@@ -14,7 +14,7 @@ namespace Chess3
             var bishop = new Bishop(XPos, YPos, color, directionDown, board);
             var rook = new Rook(XPos, YPos, color, directionDown, board);
             var legal = bishop.isLegalMove(x, y) || rook.isLegalMove(x, y);
-            Console.WriteLine("queen legal " + legal);
+            
             //if it is legal for either rook or bishop it should be fine
             return legal;
         }

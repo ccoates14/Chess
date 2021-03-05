@@ -15,8 +15,18 @@ namespace Chess3
             const bool topPlayer = true;
             gameOver = false;
             board = new Board();
-            player1 = new Player(!topPlayer, board);
-            player2 = new Player(topPlayer, board);
+
+            King topKing = board.blackKing;
+            King bottomKing = board.whiteKing;
+
+            if (topKing.color != BaseEntity.COLOR_FOR_TOP_PLAYER)
+            {
+                topKing = board.whiteKing;
+                bottomKing = board.blackKing;
+            }
+
+            player1 = new Player(!topPlayer, board, bottomKing);
+            player2 = new Player(topPlayer, board, topKing);
           
             run();
         }
@@ -47,8 +57,8 @@ namespace Chess3
                     else
                     {
                         Tuple<int, int, int, int> userMove = sanitizePlayerInput(input);
-                        if (userMove != null) userMove = translatePlayerMove(userMove);
-                        var containsUnit = board.getUnitAtPos(userMove.Item1, userMove.Item2) != null; //lets check if the player is trying to grab an empty pos
+                        if (userMove != null) userMove = translatePlayerMove(userMove); 
+                        var containsUnit = userMove != null ? board.getUnitAtPos(userMove.Item1, userMove.Item2) != null : false; //lets check if the player is trying to grab an empty pos
 
                         if (!containsUnit || userMove == null || !currentPlayer.move(userMove))
                         {
@@ -56,6 +66,7 @@ namespace Chess3
                         }
                         else
                         {
+
                             board.printSelf();
 
                             if (currentPlayer == player1)
@@ -65,6 +76,13 @@ namespace Chess3
                             else
                             {
                                 currentPlayer = player1;
+                            }
+
+                            //currentplayer is now the new player 
+                            //lets see if they are in check
+                            if (currentPlayer.inCheck())
+                            {
+                                Console.WriteLine(currentPlayer.getColor() + " player in check!");
                             }
 
                             gameOver = board.isGameOver();
